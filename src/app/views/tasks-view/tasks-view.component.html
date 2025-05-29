@@ -1,0 +1,4 @@
+<h3 class="font-semibold text-[35px] text-center">Tabla de Tareas</h3>
+<div class="mt-8 px-10">
+    <app-table [tasks]="tasks" (refreshTasks)="getTasks()" (deleteTask)="deleteTask($event)"></app-table>
+</div>
