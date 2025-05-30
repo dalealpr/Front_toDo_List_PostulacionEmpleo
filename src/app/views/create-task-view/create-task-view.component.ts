@@ -19,7 +19,7 @@ export class CreateTaskViewComponent {
   createTaskForm: FormGroup
   titulo: FormControl
   descripcion: FormControl
-  status: FormControl
+  // status: FormControl
 
   constructor(
     private taskService: TaskService,
@@ -29,12 +29,12 @@ export class CreateTaskViewComponent {
 
     this.titulo = new FormControl('')
     this.descripcion = new FormControl('')
-    this.status = new FormControl('pendiente')
+    // this.status = new FormControl('pendiente')
 
     this.createTaskForm = new FormGroup({
       titulo: this.titulo,
       descripcion: this.descripcion,
-      status: this.status
+      // status: this.status
     })
   }
 

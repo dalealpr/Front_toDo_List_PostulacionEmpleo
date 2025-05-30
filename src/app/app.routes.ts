@@ -14,7 +14,7 @@ export const routes: Routes = [
     path:'',
     component: HomePageComponent,
     children: [
-      { path: '', redirectTo: 'tasks', pathMatch: 'full' },
+      { path: '', redirectTo: 'proyect', pathMatch: 'full' },
       { path: 'proyect', component: ProyectViewComponent },
       { path: 'tasks', component: TasksViewComponent },
       { path: 'create-task', component: CreateTaskViewComponent },
