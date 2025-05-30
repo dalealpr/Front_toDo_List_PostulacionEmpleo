@@ -1,6 +1,6 @@
 import { SocketService } from './../../../services/socket-service.service';
 import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
-import { Component, Inject, inject } from '@angular/core';
+import { Component, Inject, inject, NgZone } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TaskService } from '../../../services/task-service.service';
 import { CommonModule } from '@angular/common';
@@ -18,13 +18,14 @@ export class UpdateTaskModalComponent {
   private data = inject<{ id: number }>(DIALOG_DATA);
   private taskService = inject(TaskService);
 
+
   // Formulario
   taskForm: FormGroup
   titulo: FormControl
   descripcion: FormControl
   status: FormControl
 
-  constructor(private socketService: SocketService) {
+  constructor(private socketService: SocketService, private zone: NgZone) {
 
     this.titulo = new FormControl('')
     this.descripcion = new FormControl('')
@@ -64,12 +65,7 @@ export class UpdateTaskModalComponent {
         console.log('✅ Tarea actualizada:', updatedTask);
 
         // Emitimos el evento por socket
-      this.socketService.emitCustomEvent('taskUpdated', {
-        id: this.data.id,
-        titulo: updatedData.titulo,
-        descripcion: updatedData.descripcion,
-        status: updatedData.status
-      });
+       this.socketService.emitCustomEvent('tasksUpdated', {});
 
         this.closeModal();
       },

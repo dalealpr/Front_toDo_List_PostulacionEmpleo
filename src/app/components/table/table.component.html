@@ -12,9 +12,9 @@
         </thead>
         <tbody class="bg-[#1b1d2d]">
             <tr *ngFor="let task of tasks; trackBy: trackByTaskId" class="hover:bg-[#27293b]">
-                <td class="px-4 py-2 border-b text-[15px] border-gray-700 ">{{ task.id }}</td>
-                <td class="px-4 py-2 border-b text-[15px] border-gray-700">{{ task.titulo }}</td>
-                <td class="px-4 py-2 border-b text-[15px] border-gray-700 truncate lg:max-w-[280px] max-w-[200px]">{{
+                <td class="px-4 py-2 border-b text-[15px] border-gray-700 " [ngClass]="{ 'text-gray-500': task.status === 'completada' }">{{ task.id }}</td>
+                <td class="px-4 py-2 border-b text-[15px] border-gray-700" [ngClass]="{ 'line-through text-gray-500': task.status === 'completada' }">{{ task.titulo }}</td>
+                <td class="px-4 py-2 border-b text-[15px] border-gray-700 truncate lg:max-w-[280px] max-w-[200px]" [ngClass]="{ 'line-through text-gray-500': task.status === 'completada' }">{{
                     task.descripcion }}</td>
                 <td class="px-4 py-2 border-b text-[15px] border-gray-700 capitalize"> 
                     <div class="flex gap-1.5 items-center">
